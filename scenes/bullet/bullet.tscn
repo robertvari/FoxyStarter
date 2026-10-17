@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://ca0bwf2khgcdb"]
+
+[ext_resource type="Texture2D" uid="uid://07oc1prt2gdv" path="res://assets/images/enemies/plant/Bullet.png" id="1_7c8un"]
+[ext_resource type="Script" uid="uid://cgnt8lrq4ux1j" path="res://scenes/bullet/bullet.gd" id="1_c6pnf"]
+[ext_resource type="PackedScene" uid="uid://cd1cf14jar6lq" path="res://scenes/life_timer/life_timer.tscn" id="2_83itf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_83itf"]
+radius = 5.0990195
+
+[node name="Bullet" type="Area2D" unique_id=1778574297]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("1_c6pnf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=673656290]
+texture = ExtResource("1_7c8un")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1031385982]
+shape = SubResource("CircleShape2D_83itf")
+
+[node name="LifeTimer" parent="." unique_id=1681290913 instance=ExtResource("2_83itf")]
+lifetime = 6.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

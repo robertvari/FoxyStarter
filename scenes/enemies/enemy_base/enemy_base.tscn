@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://yduhhy0sspha"]
+
+[ext_resource type="Script" uid="uid://ctkgshjl85dmy" path="res://scenes/enemies/enemy_base/enemy_base.gd" id="1_2fyc8"]
+[ext_resource type="PackedScene" uid="uid://ceakmrpueyp1i" path="res://scenes/stomp_box/stomp_box.tscn" id="1_2hqhx"]
+[ext_resource type="PackedScene" uid="uid://chwdw5gyttwbv" path="res://scenes/explosion/explosion.tscn" id="3_iae1c"]
+[ext_resource type="PackedScene" uid="uid://cplhso5d6g03s" path="res://scenes/pick_up/pick_up.tscn" id="4_dsnet"]
+
+[node name="EnemyBase" type="CharacterBody2D" unique_id=355154833]
+collision_layer = 64
+script = ExtResource("1_2fyc8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=726152891]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=677174281]
+
+[node name="WallRay" type="RayCast2D" parent="." unique_id=978727750]
+target_position = Vector2(-14, 0)
+
+[node name="FloorRay" type="RayCast2D" parent="." unique_id=1676648991]
+position = Vector2(-7, 0)
+target_position = Vector2(0, 12)
+
+[node name="StompBox" parent="." unique_id=2132955246 instance=ExtResource("1_2hqhx")]
+position = Vector2(0, -5)
+collision_layer = 16
+explosion_scene = ExtResource("3_iae1c")
+pickup_scene = ExtResource("4_dsnet")
+
+[node name="HitArea" type="Area2D" parent="." unique_id=1339772550]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=1851832049]
+position = Vector2(0, 4)
+
+[node name="Timer" type="Timer" parent="." unique_id=563200669]
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animation_finished"]
+[connection signal="stomped" from="StompBox" to="." method="_on_stomp_box_stomped"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
