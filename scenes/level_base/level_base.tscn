@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b5gn6fgycf8of" path="res://scenes/player/player.tscn" id="4_ncu3c"]
 [ext_resource type="PackedScene" uid="uid://deaxywj3jix5v" path="res://scenes/kill_zone/kill_zone.tscn" id="5_kr674"]
 [ext_resource type="PackedScene" uid="uid://lxwsijntng7y" path="res://scenes/object_maker/object_maker.tscn" id="8_48c0a"]
+[ext_resource type="PackedScene" uid="uid://blx6hwy6mut1n" path="res://scenes/moving_platform/moving_platform_an.tscn" id="8_cr6la"]
 
 [node name="LevelBase" type="Node" unique_id=967511087]
 script = ExtResource("1_p2h7h")
@@ -40,3 +41,8 @@ camera_bottom = 650
 [node name="ObjectMaker" parent="." unique_id=853401269 instance=ExtResource("8_48c0a")]
 
 [node name="Paths" type="Node" parent="." unique_id=1372083986]
+
+[node name="MovingPlatformAN" parent="." unique_id=1860608994 instance=ExtResource("8_cr6la")]
+position = Vector2(329, 610)
+offset = Vector2(0, -100)
+duration = 5.0
